@@ -1,5 +1,3 @@
-// https://jestjs.io/docs/manual-mocks
-
 const bcrypt = require('bcrypt');
 
 const isDefined = data => {

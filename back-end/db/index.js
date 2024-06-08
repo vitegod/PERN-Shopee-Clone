@@ -1,11 +1,7 @@
 const pg = require('pg');
-
-// Setup
 const pool = new pg.Pool();
-
 const query = (text, params, callback) => {
   console.log('Making query...');
-  // https://node-postgres.com/features/pooling#single-query
   return pool.query(text, params, callback);
 };
 
@@ -67,8 +63,6 @@ const updateUserPassword = async (id, hashed_pw) => {
   return;
 };
 
-
-// Products
 const getProducts = async (category_id=undefined, search_term=undefined) => {
   const baseQuery = 'SELECT id, name, price, available_stock_count, short_description, long_description, avg_rating, rating_count, img_link FROM products';
   let res;
