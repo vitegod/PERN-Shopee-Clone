@@ -19,7 +19,7 @@ export default function AccountPage() {
       <h1 className={utilStyles.h1}>Account</h1>
       <p>You are logged in as email: <span className={utilStyles.email}>{authData.email_address}</span>. 🌈</p>
       <p className={utilStyles.mb3rem}>
-        Check your wishlish products at <InlineLink path="/cart" anchor="Giỏ hàng" />.
+        Check your wishlish products at <InlineLink path="/cart" anchor="open cart" />.
       </p>
       <h2>Orders History</h2>
       <OrdersHistory />

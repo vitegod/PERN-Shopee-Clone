@@ -18,11 +18,9 @@ const sellerRouter = require('./routes/sellers');
 const api = express();
 const port = process.env.PORT;
 
-// https://expressjs.com/en/resources/middleware/morgan.html
 api.use(logging(process.env.LOGGING));
 
 api.use(express.json());
-// https://expressjs.com/en/resources/middleware/cors.html
 const devOrigin = ["https://web.postman.co/", "http://localhost", /http:\/\/localhost:.*/];
 const prodOrigin = process.env.FRONT_END_BASE_URL;
 const origin = process.env.NODE_ENV !== "production" ? devOrigin : prodOrigin;
@@ -32,14 +30,7 @@ api.use(cors({
   credentials: true,
 }));
 
-
-// https://www.passportjs.org/concepts/authentication/sessions/
-// https://www.passportjs.org/howtos/session/
-// https://expressjs.com/en/resources/middleware/session.html
-
 if (process.env.NODE_ENV === 'production') {
-  // https://expressjs.com/en/guide/behind-proxies.html
-  // https://stackoverflow.com/a/75418142/11262798
   api.set('trust proxy', 1);
 
   api.use(session({
@@ -61,12 +52,10 @@ if (process.env.NODE_ENV === 'production') {
   }));
 }
 
-// Authenticate all routes and add user data to req.user
 api.use(passport.initialize());
 api.use(passport.authenticate('session'));
 passport.serializeUser(auth.serialize);
 passport.deserializeUser(auth.deserialize);
-
 
 api.get('/', (req, res) => {
   res.status(200).send(
@@ -75,7 +64,7 @@ api.get('/', (req, res) => {
 });
 
 api.use(cors({
-  origin: ["http://localhost:3000"], // Cho phép yêu cầu từ localhost:3000
+  origin: ["http://localhost:3000"],
   credentials: true,
 }));
 

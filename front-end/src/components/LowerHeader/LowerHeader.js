@@ -1,9 +1,7 @@
-import { NavLink, useNavigate, useRouteLoaderData } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styles from "./LowerHeader.module.css";
 
-
 export default function LowerHeader() {
-
   function renderNavItem(path, anchor, onClick=null) {
     return (
       <li className={styles.listItem}>
