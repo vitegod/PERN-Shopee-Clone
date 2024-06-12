@@ -14,8 +14,8 @@ export default function FallbackErrorPage() {
     <>
       {is404 ? <Header /> : null}
       <main className={utilStyles.pagePadding}>
-        <h1 className={utilStyles.h1}>{is404 ? "404 (Không tìm thấy kết quả)" : "Oops!"}</h1>
-        <p>{is404 ? "Trang này không tồn tại." : "Có lỗi đáng tiếc xảy ra."}</p>
+        <h1 className={utilStyles.h1}>{is404 ? "404 (Not found)" : "Oops!"}</h1>
+        <p>{is404 ? "This page doesn't exist." : "Error."}</p>
         <p>
           <em>{error.statusText || error.message}</em>
         </p>

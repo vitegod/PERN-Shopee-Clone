@@ -27,7 +27,7 @@ export default function SearchBar() {
       <input
         type="search"
         maxLength={60}
-        placeholder="Tìm kiếm sản phẩm"
+        placeholder="Search products..."
         value={searchTerm}
         onChange={handleChange}
         className={styles.input}   

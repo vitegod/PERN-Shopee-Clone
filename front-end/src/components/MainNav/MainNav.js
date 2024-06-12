@@ -38,23 +38,23 @@ export default function MainNav() {
     <nav className={styles.mainNav}>
       <div className={styles.leftNav}>
         <ul className={styles.navList}>
-          {renderNavItem("/Home", "Trang chủ")}
-          {renderNavItem("/", "Sản phẩm")}
-          {renderNavItem("/seller/products", "Bán hàng")}
+          {/* {renderNavItem("/Home", "Home")} */}
+          {renderNavItem("/", "Browse products")}
+          {renderNavItem("/seller/products", "Sell products")}
         </ul>
       </div>
       <SearchBar to="/" className={styles.search} />
       <div className={styles.rightNav}>
         {authData?.logged_in ?
         <ul className={styles.navList}>
-          {renderNavItem("/account", "Tài khoản")}
-          {renderNavItem("/cart", "Giỏ hàng")}
-          {renderNavItem("#", "Đăng xuất", handleClickLogOut)}
+          {renderNavItem("/account", "Account")}
+          {renderNavItem("/cart", "Cart")}
+          {renderNavItem("#", "Log out", handleClickLogOut)}
         </ul>
         :
         <ul className={styles.navList}>
-          {renderNavItem("/login", "Đăng nhập")}
-          {renderNavItem("/register", "Đăng ký")}
+          {renderNavItem("/login", "Log in")}
+          {renderNavItem("/register", "Log out")}
         </ul>
         }
       </div>

@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const numberOfUsers = 10000;
+const numberOfUsers = 100000;
 const baseUrl = 'http://localhost:8000';
 
 async function createUser(email, password) {
@@ -17,8 +17,8 @@ async function createUser(email, password) {
 }
 
 async function createUsers() {
-    for (let i = 0; i < numberOfUsers; i++) {
-        const email = `test${i + 40}@gmail.com`; // Tạo email tự động
+    for (let i = 9088; i < numberOfUsers; i++) {
+        const email = `test${i}@gmail.com`; // Tạo email tự động
         const password = 'password123'; // Mật khẩu cho tất cả user
         await createUser(email, password);
     }

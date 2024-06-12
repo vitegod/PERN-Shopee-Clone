@@ -7,8 +7,8 @@ export default function InlineErrorPage({ pageName, type, message, loginRedirect
   function renderMessage() {
     if (type === "login_required") {
       const path = loginRedirect ? `/login?redirect=${loginRedirect}` : "/login";
-      const loginLink = <InlineLink path={path} anchor="đăng nhập" />;
-      return <p>Vui lòng {loginLink} để xem nội dung này</p>;
+      const loginLink = <InlineLink path={path} anchor="log in" />;
+      return <p>Please {loginLink} to see this page.</p>;
     } else {
       return <p>{message}</p>;
     }

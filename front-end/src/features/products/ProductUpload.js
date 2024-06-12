@@ -18,9 +18,6 @@ export default function ProductUpload() {
     , "Fashion"
     , "Home & Kitchen"
     , "Beauty & Personal Care"
-    , "Sports & Outdoors"
-    , "Toys & Games"
-    , "Health & Household"
     , "Automotive"
     , "Other"
   ]//db.getCategories();

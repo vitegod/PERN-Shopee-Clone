@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 
 import MainNav from "../MainNav/MainNav";
 import styles from "./UpperHeader.module.css";
-import SearchBar from "components/SearchBar/SearchBar";
-
 
 export default function UpperHeader() {
   return (
