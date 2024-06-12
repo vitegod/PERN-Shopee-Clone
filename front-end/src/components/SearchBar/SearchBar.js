@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { MdOutlineSearch } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-
 import styles from "./SearchBar.module.css";
-
 
 export default function SearchBar() {
 
@@ -29,7 +27,7 @@ export default function SearchBar() {
       <input
         type="search"
         maxLength={60}
-        placeholder="Search Products"
+        placeholder="Tìm kiếm sản phẩm"
         value={searchTerm}
         onChange={handleChange}
         className={styles.input}   

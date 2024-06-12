@@ -16,16 +16,13 @@ export default function LowerHeader() {
     <div className={styles.header}>
       <nav className={styles.mainNav}>
         <ul className={styles.navList}>
-          {renderNavItem("/category/books", "Books")}
-          {renderNavItem("/category/electronics", "Electronics")}
-          {renderNavItem("/category/fashion", "Fashion")}
-          {renderNavItem("/category/home-kitchen", "Home & Kitchen")}
-          {renderNavItem("/category/beauty-personal-care", "Beauty & Personal Care")}
-          {renderNavItem("/category/sports-outdoors", "Sports & Outdoors")}
-          {renderNavItem("/category/toys-games", "Toys & Games")}
-          {renderNavItem("/category/health-wellness", "Health & Wellness")}
-          {renderNavItem("/category/automotive", "Automotive")}
-          {renderNavItem("/category/others", "Others")}
+          {renderNavItem("/category/books", "Sách")}
+          {renderNavItem("/category/electronics", "Điện tử")}
+          {renderNavItem("/category/fashion", "Thời trang")}
+          {renderNavItem("/category/home-kitchen", "Nhà cửa & Bếp núc")}
+          {renderNavItem("/category/health-wellness", "Chăm sóc sức khỏe")}
+          {renderNavItem("/category/automotive", "Xe cộ")}
+          {renderNavItem("/category/others", "Khác")}
         </ul>
       </nav>
     </div>

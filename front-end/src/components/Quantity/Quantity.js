@@ -11,7 +11,7 @@ const Quantity = ({ initialValue, onChange, max }) => {
 
   return (
     <div>
-      <p>Set the quantity</p>
+      <p>Lựa chọn số lượng</p>
       <input
       type="number"
       value={value}

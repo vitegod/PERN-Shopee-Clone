@@ -4,7 +4,8 @@
   "description": "Viet Nguyen Hoang's Shopee Clone Backend Website with PERN Stack",
   "main": "index.js",
   "scripts": {
-    "test": "jest --runInBand"
+    "test": "jest --runInBand",
+    "start": "react-scripts start"
   },
   "author": "Viet Nguyen Hoang",
   "license": "ISC",

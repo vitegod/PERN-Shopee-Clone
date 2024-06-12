@@ -6,7 +6,7 @@ export default function GoogleAuthButton() {
         className={styles.googleBtn}
         onClick={() => window.location.href = `${process.env.REACT_APP_API_BASE_URL}/auth/google`}
         >
-        Sign in with Google
+        Đăng nhập với Google
       </button>
   );
 }

@@ -30,6 +30,7 @@ def generate_insert_sql(product_data):
     VALUES
         ((SELECT id FROM product_row), {category_id});"""
     sql = sql_template.format(**product_data)
+    sql = sql.replace('"', "'")
     return sql
 
 product_info = [

@@ -8,28 +8,10 @@ const auth = require('../auth');
 const db = require('../db/index');
 
 const router = express.Router();
-
-// https://expressjs.com/en/resources/middleware/body-parser.html
 const jsonParser = bodyParser.json();
-
-// https://www.passportjs.org/concepts/authentication/password/
 passport.use(new LocalStrategy(auth.localVerify));
-
-// https://www.passportjs.org/concepts/authentication/google/
 passport.use(new GoogleStrategy(auth.googleConfig, auth.googleVerify));
 
-router.post('/logout', (req, res) => {
-  req.logout(err => { // Added callback function for req.logout()
-    req.session.destroy(err => { 
-      if (err) {
-        console.error("Error destroying session:", err);
-        res.sendStatus(500); 
-      } else {
-        res.sendStatus(200); 
-      }
-    });
-  });
-});
 
 router.get('/status', (req, res) => {
   let jsonData;
@@ -74,7 +56,6 @@ router.post('/register', jsonParser, async (req, res) => {
         return res.status(201).json(userData);
       });
     } catch(err) {
-      // Login failed; just return new user data
       return res.status(201).json(userData);
     }
   } catch(err) {
@@ -100,21 +81,22 @@ router.post('/login',
   }
 );
 
-passport.use(new GoogleStrategy({
-  clientID: process.env.GOOGLE_CLIENT_ID,
-  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: `${process.env.BACKEND_BASE_URL}/auth/google/redirect`
-}, (accessToken, refreshToken, profile, done) => {
-  // Xử lý profile người dùng
-}));
-
-router.get('/google', passport.authenticate('google', {
-  scope: ['profile', 'email']
-}));
+router.get('/google', passport.authenticate('google'));
 
 router.get('/google/redirect', passport.authenticate('google', {
   successRedirect: `${process.env.FRONT_END_BASE_URL}/account`,
   failureRedirect: `${process.env.FRONT_END_BASE_URL}/login?googleAuthError=true`
 }));
+
+router.post('/logout', (req, res) => {
+  if (req.isAuthenticated()) {
+    req.logout((err) => {
+      if (err) {
+        return res.status(500).send('Sorry, logout failed.');
+      }
+    });
+  }
+  res.status(200).send();
+});
 
 module.exports = router;

@@ -7,25 +7,20 @@ import utilStyles from "../../App/utilStyles.module.css";
 import styles from "./ProductFeed.module.css";
 
 async function fetchCategoryData(categorySlug) {
-  // Fetch all categories data
   const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/categories`);
   if (!res.ok) {
     throw new Error("Unsuccessful categories fetch.");
   }
   const categories = await res.json();
 
-  // Find matching category, otherwise return a 404
   const filteredCategories = categories.filter(c => c.url_slug === categorySlug);
   if (filteredCategories.length === 0) {
-    // https://reactrouter.com/en/main/route/error-element#throwing-manually
     throw new Response("Not Found", { status: 404 });
   }
   return filteredCategories[0];
 }
 
 export async function productFeedLoader({ params, request }) {
-  // https://reactrouter.com/en/main/start/tutorial#loading-data
-  // https://reactrouter.com/en/main/route/loader
   try {
     const url = new URL(request.url);
     let productsFetchURL = `${process.env.REACT_APP_API_BASE_URL}/products`;
@@ -33,10 +28,7 @@ export async function productFeedLoader({ params, request }) {
     let searchTerm = null;
 
     if (params.categorySlug) {
-      // Fetch category data
       categoryData = await fetchCategoryData(params.categorySlug);
-
-      // Add category filter query string to product data request
       productsFetchURL += `?category_id=${categoryData.id}`;
 
     } else if (url.pathname.includes("search")) {
@@ -44,30 +36,26 @@ export async function productFeedLoader({ params, request }) {
       if (!searchTerm) {
         return redirect("/");
       }
-      // Add search term filter query string to product data request
       productsFetchURL += `?search_term=${searchTerm}`;
     }
 
-    // Fetch product listings data
     const res = await fetch(productsFetchURL);
     if (!res.ok) {
       throw new Error("Unsuccessful products fetch.");
     }
     const productsData = await res.json();
 
-    // Return all available data
     return { productsData, categoryData, searchTerm };
 
   } catch (error) {
     if (error.status === 404) {
-      throw error;  // Serve 404 error page
+      throw error;
     }
     return { error: "Sorry, products could not be loaded." };
   }
 }
 
 export function ProductFeed({ isSearchResults }) {
-  // https://reactrouter.com/en/main/hooks/use-route-loader-data
   const { categoryData, productsData, searchTerm, error } = useLoaderData();
 
   if (error) {

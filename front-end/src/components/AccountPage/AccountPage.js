@@ -16,12 +16,12 @@ export default function AccountPage() {
 
   return (
     <div className={utilStyles.pagePadding}>
-      <h1 className={utilStyles.h1}>Your account</h1>
-      <p>You are logged in as <span className={utilStyles.email}>{authData.email_address}</span>. 🌈</p>
+      <h1 className={utilStyles.h1}>Trang cá nhân</h1>
+      <p>Bạn đang đăng nhập với email: <span className={utilStyles.email}>{authData.email_address}</span>. 🌈</p>
       <p className={utilStyles.mb3rem}>
-        View your previous orders below or <InlineLink path="/cart" anchor="visit your cart" />.
+        Theo dõi các sản phẩm đang có trong giỏ hàng tại <InlineLink path="/cart" anchor="Giỏ hàng" />.
       </p>
-      <h2>Your orders</h2>
+      <h2>Danh sách đơn đặt hàng</h2>
       <OrdersHistory />
     </div>
   );

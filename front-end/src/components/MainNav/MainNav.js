@@ -1,10 +1,8 @@
 import { NavLink, useNavigate, useRouteLoaderData } from "react-router-dom";
 import styles from "./MainNav.module.css";
-
 import SearchBar from "components/SearchBar/SearchBar";
 
 export default function MainNav() {
-  // https://reactrouter.com/en/main/hooks/use-route-loader-data
   const authData = useRouteLoaderData("app");
   const navigate = useNavigate();
 
@@ -24,7 +22,7 @@ export default function MainNav() {
     } catch (error) {
       console.log(error);
     } finally {
-      navigate(0);  // Refresh page to clear auth state and re-render
+      navigate(0);
     }
   }
 
@@ -40,23 +38,23 @@ export default function MainNav() {
     <nav className={styles.mainNav}>
       <div className={styles.leftNav}>
         <ul className={styles.navList}>
-          {renderNavItem("/", "Home")}
-          {renderNavItem("/", "Browse")}
-          {renderNavItem("/seller/products", "Seller Page")}
+          {renderNavItem("/Home", "Trang chủ")}
+          {renderNavItem("/", "Sản phẩm")}
+          {renderNavItem("/seller/products", "Bán hàng")}
         </ul>
       </div>
       <SearchBar to="/" className={styles.search} />
       <div className={styles.rightNav}>
         {authData?.logged_in ?
         <ul className={styles.navList}>
-          {renderNavItem("/account", "Account")}
-          {renderNavItem("/cart", "Open Cart")}
-          {renderNavItem("#", "Log Out", handleClickLogOut)}
+          {renderNavItem("/account", "Tài khoản")}
+          {renderNavItem("/cart", "Giỏ hàng")}
+          {renderNavItem("#", "Đăng xuất", handleClickLogOut)}
         </ul>
         :
         <ul className={styles.navList}>
-          {renderNavItem("/login", "Log In")}
-          {renderNavItem("/register", "Register")}
+          {renderNavItem("/login", "Đăng nhập")}
+          {renderNavItem("/register", "Đăng ký")}
         </ul>
         }
       </div>
