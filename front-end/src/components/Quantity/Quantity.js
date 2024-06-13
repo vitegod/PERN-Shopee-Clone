@@ -11,14 +11,14 @@ const Quantity = ({ initialValue, onChange, max }) => {
 
   return (
     <div>
-      <p>Lựa chọn số lượng</p>
+      {/* <p>Lựa chọn số lượng</p>
       <input
       type="number"
       value={value}
       onChange={handleChange}
       min="1"
       max={max}
-      />
+      /> */}
     </div>
   );
 };

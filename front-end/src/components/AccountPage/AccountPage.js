@@ -7,7 +7,6 @@ import utilStyles from "../../App/utilStyles.module.css";
 
 
 export default function AccountPage() {
-  // https://reactrouter.com/en/main/hooks/use-route-loader-data
   const authData = useRouteLoaderData("app");
 
   if (!authData.logged_in) {
