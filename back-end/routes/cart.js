@@ -31,10 +31,10 @@ router.post('/items/:id', requireLogin, async (req, res) => {
     }
 
     const userId = req.user.id;
-    // const itemExists = await db.cartItemExists(userId, productId);
-    // if (itemExists) {
-    //   return res.status(400).send('This product is already in your cart.');
-    // }
+    const itemExists = await db.cartItemExists(userId, productId);
+    if (itemExists) {
+      return res.status(400).send('This product is already in your cart.');
+    }
 
     const cartItem = await db.addCartItem(userId, productId, requestedQuantity);
     res.status(201).json(cartItem);

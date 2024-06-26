@@ -67,8 +67,6 @@ const getCategories = () => {
   return [{}, {}, {}];
 };
 
-
-// Exports
 module.exports = {
   emailExists,
   getUserByEmail,

@@ -1,4 +1,4 @@
-set lc_monetary to "en_VN.utf8";
+set lc_monetary to "en_US.utf8";
 CREATE DATABASE "Viet-PERN-ecom"
   WITH
   OWNER = postgres

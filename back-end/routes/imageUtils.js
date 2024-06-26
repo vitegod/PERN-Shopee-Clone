@@ -1,5 +1,4 @@
 const cloudinary = require("cloudinary").v2;
-// Load biến môi trường từ file .env
 require("dotenv").config();
 
 // Cấu hình cloudinary
@@ -12,12 +11,12 @@ cloudinary.config({
 async function uploadImage(file) {
   try {
     const result = await cloudinary.uploader.upload(file.path, {
-      folder: "product_images", // Lưu vào folder product_images trên cloudinary
+      folder: "product_images",
     });
     return result.secure_url;
   } catch (error) {
     console.error("Error uploading image:", error);
-    throw error; // Hoặc trả về giá trị lỗi tùy thuộc vào cách xử lý của bạn
+    throw error;
   }
 }
 

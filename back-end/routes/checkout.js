@@ -6,11 +6,8 @@ const requireLogin = require('./middleware');
 
 const router = express.Router();
 
-// https://expressjs.com/en/resources/middleware/body-parser.html
 const jsonParser = bodyParser.json();
 
-// https://stripe.com/docs/checkout/embedded/quickstart?client=react&lang=node
-// https://stripe.com/docs/payments/accept-a-payment?platform=web&ui=embedded-checkout
 const stripe = require('stripe')(`${process.env.STRIPE_SECRET_KEY}`);
 
 
@@ -54,7 +51,7 @@ router.post('/create-payment-session', requireLogin, async (req, res) => {
     const orderItemsData = orderData.order_items.map(item => {
       return {
         price_data: {
-          currency: 'vnd',
+          currency: 'usd',
           product_data: {
             name: item.product_name,
           },
