@@ -29,7 +29,7 @@
    npm install
    ```
    
-4. Set up environment variables:
+4. **Set up environment variables:**
 
    * Back-end:
    
@@ -41,7 +41,7 @@
    Create a .env file in the front-end directory.
    Set the necessary environment variables (e.g., API endpoint URL for connecting to the back-end).
    
-6. Run the project
+5. **Run the project:**
    ```bash
    # In the back-end directory
    npm run dev 
